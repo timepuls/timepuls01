@@ -1,19 +1,17 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<frameset>
-    <frame>
-    <frame>
-    <noframes>
-    <body>
-    <p>This page uses frames. The current browser you are using does not support frames.</p>
-    <?php
+<?php
+ // module/Album/view/album/album/add.phtml:
 
-	?>
-    </body>
-    </noframes>
-</frameset>
-</html>
+ $title = 'Add new album';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <?php
+ $form->setAttribute('action', $this->url('album', array('action' => 'add')));
+ $form->prepare();
+
+ echo $this->form()->openTag($form);
+ echo $this->formHidden($form->get('id'));
+ echo $this->formRow($form->get('title'));
+ echo $this->formRow($form->get('artist'));
+ echo $this->formSubmit($form->get('submit'));
+ echo $this->form()->closeTag();
